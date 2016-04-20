@@ -1,24 +1,30 @@
 class Customer
-  attr_reader :name
+  attr_reader :name, :email
   @@customers = []
 
   def initialize(options = {})
     @name = options[:name]
+    @email = options[:email]
     add_to_customers
   end
 
   def purchase(product)
     if product.in_stock?
       Transaction.new(self, product)
+      send_invoice(product.title)
     else
       raise OutOfStockError, "'#{product.title}' is out of stock."
     end
   end
 
+  def send_invoice(product_title) # Dummy method for sending e-mail invoices
+    puts "\n---------------\nTo: #{email}\nHello #{name}, \nThank you for purchasing #{product_title}.\nYours,\nToyCity!"
+  end
+
   def self.all
     @@customers
   end
-
+  
   def self.find_by_name(name)
     @@customers.find {|cust| cust.name == name}
   end
