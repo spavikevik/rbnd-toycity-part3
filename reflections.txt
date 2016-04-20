@@ -1,0 +1,16 @@
+I think I spent roughly about 30-40 minutes total for writing the code for this project,
+and I found it quite an easy task to accomplish.
+It could be because I have already worked with OOP (in Java), though.
+
+I encountered some minor challenges along the way,
+and I wouldn't say they were very hard to figure out.
+Maybe my biggest one was trying to figure out what new features to implement.
+
+I added an attribute to the Customer class for tracking the e-mail addresses of customers
+and a (dummy) method for sending invoices for product purchases.
+Another thing I added is functionality for returning products which ensures that the return is not 90 days after the
+date of purchase along with a way of tracking returned products.
+
+All in all, what I did here was pretty simple, which is why I didn't have too much trouble with it.
+However, I should work on building more complex applications that would really challenge me,
+and provide users with some really neat functionality.
