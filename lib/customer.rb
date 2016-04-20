@@ -11,6 +11,10 @@ class Customer
     @@customers
   end
 
+  def self.find_by_name(name)
+    @@customers.find {|cust| cust.name == name}
+  end
+
   private
 
   def add_to_customers
@@ -20,5 +24,5 @@ class Customer
       @@customers << self
     end
   end
-  
+
 end
