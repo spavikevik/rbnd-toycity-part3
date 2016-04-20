@@ -1,3 +1,4 @@
+require 'date'
 class Customer
   attr_reader :name, :email
   @@customers = []
@@ -17,6 +18,14 @@ class Customer
     end
   end
 
+  def return(product)
+    if (Transaction.find_by_customer_and_product(self, product).date - Date.today).to_i < 90
+      Transaction.return(self, product)
+    else
+      raise ReturnPeriodEndedError
+    end
+  end
+
   def send_invoice(product_title) # Dummy method for sending e-mail invoices
     puts "\n---------------\nTo: #{email}\nHello #{name}, \nThank you for purchasing #{product_title}.\nYours,\nToyCity!"
   end
@@ -24,7 +33,7 @@ class Customer
   def self.all
     @@customers
   end
-  
+
   def self.find_by_name(name)
     @@customers.find {|cust| cust.name == name}
   end
