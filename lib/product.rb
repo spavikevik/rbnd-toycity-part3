@@ -11,7 +11,7 @@ class Product
   end
 
   def in_stock?
-    stock > 0 ? true : false
+    stock > 0
   end
 
   def self.all

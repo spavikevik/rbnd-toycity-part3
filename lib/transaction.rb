@@ -1,18 +1,17 @@
 require 'date'
 class Transaction
-  attr_reader :product, :customer, :date
+  attr_reader :product, :customer, :date, :id
+  @@id = 1
   @@transactions = []
   @@returns = []
 
   def initialize(customer, product)
+    @id = @@id
+    @@id += 1
     @customer = customer
     @product = product
     @date = Date.today
     add_to_transactions
-  end
-
-  def id
-    @@transactions.index(self).to_i + 1
   end
 
   def self.list_returns
